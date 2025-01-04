@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Album of Our Journey</title>
+    <style>
+      body {
+        background-color: #ffe5f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        font-family: Trattatello, fantasy;
+        color: #ff89a9;
+        font-size: 70px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .timeline {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        height: 4px;
+        width: 100%;
+        background-color: #ff89a9;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .timeline-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 20px;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .timeline-item::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        background-color: #ff89a9;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .timeline-item img {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        object-fit: cover;
+        margin-top: 10px; /* Mengurangi jarak antara tanggal dan garis timeline */
+      }
+
+      .timeline-item img:hover{
+        transform: scale(1.1);
+      }
+
+      .timeline-item p {
+        color: #ff89a9;
+        font-family: URW Chancery L, cursive;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 5px; /* Mengurangi jarak antara tanggal dan garis timeline */
+      }
+
+      .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .popup-content {
+        display: flex;
+        flex-direction: row;
+        background: #fff5f9;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: left;
+        max-width: 90%;
+        max-height: 80%;
+        align-items: center;
+        position: relative;
+      }
+
+      .popup img {
+        max-width: 400px;
+        max-height: 400px;
+        margin-right: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .popup img:hover {
+        transform: scale(1.1);
+      }
+
+      .popup-text {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .popup-text .desc-box {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+      }
+
+      .popup-text p {
+        font-size: 20px;
+        color: #ff89a9;
+        margin: 0;
+      }
+
+      .fullscreen-popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .fullscreen-popup img {
+        max-width: 90%;
+        max-height: 90%;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: transparent;
+        color: #ff89a9;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .back-btn {
+        padding: 15px 30px;
+        font-size: 20px;
+        background-color: #ff89a9;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: transform 0.2s ease;
+      }
+
+      .back-btn:hover {
+        transform: scale(1.1);
+      }
+
+      .back-btn:active {
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Album of Our Journey</h1>
+    <div class="timeline">
+      <div class="timeline-item" onclick="showPopup('assets/firstTalk.PNG', '29 November 2024', 'Remember the first time we matched on bumble?')">
+        <p>29 November 2024</p>
+        <img src="assets/firstTalk.PNG" alt="First Meet">
+      </div>
+      <div class="timeline-item" onclick="showPopup('assets/firstDate.JPG', '1 Desember 2024', 'Our first date :3')">
+        <p>1 Desember 2024</p>
+        <img src="assets/firstDate.JPG" alt="First Meet">
+      </div>
+      <div class="timeline-item" onclick="showPopup('assets/meet3-0.JPG', '3 Desember 2024', 'Our first date :3')">
+        <p>3 Desember 2024</p>
+        <img src="assets/meet3-0.JPG" alt="First Meet">
+      </div>
+    </div>
+
+    <!-- Popup Section -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <button class="close-btn" onclick="closePopup()">&times;</button>
+        <img id="popup-img" src="" alt="Popup Image" onclick="showFullscreenPopup(this.src)">
+        <div class="popup-text">
+          <div class="desc-box"><p id="popup-text"></p></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="fullscreen-popup" class="fullscreen-popup" onclick="closeFullscreenPopup()">
+      <img id="fullscreen-img" src="">
+    </div>
+    
+    <button class="back-btn" onclick="window.location.href='mainPage.html'">Back to Main</button>
+
+    <script>
+      const popup = document.getElementById('popup');
+      const popupImg = document.getElementById('popup-img');
+      const popupText = document.getElementById('popup-text');
+      const fullscreenPopup = document.getElementById('fullscreen-popup');
+      const fullscreenImg = document.getElementById('fullscreen-img');
+
+      function showPopup(imageSrc, date, text) {
+        popupImg.src = imageSrc;
+        popupText.innerText = text;
+        popup.style.display = 'flex';
+      }
+
+      function closePopup() {
+        popup.style.display = 'none';
+      }
+
+      function showFullscreenPopup(src) {
+        fullscreenImg.src = src;
+        fullscreenPopup.style.display = 'flex';
+      }
+
+      function closeFullscreenPopup() {
+        fullscreenPopup.style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

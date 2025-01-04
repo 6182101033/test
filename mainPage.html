@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page</title>
+    <style>
+      body {
+        background-color: #ffe5f4;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      h1 {
+        font-family: Trattatello, fantasy;
+        color: #ff89a9;
+        font-size: 100px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .button-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        align-items: center;
+        justify-items: center;
+      }
+
+      .btn-img-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .btn-img-container:hover {
+        transform: scale(1.1);
+      }
+
+      .btn-img-container:active {
+        transform: scale(1.2);
+      }
+
+      .btn-img {
+        width: 150px;
+        height: 150px;
+      }
+
+      .btn-label {
+        margin-top: 10px;
+        font-size: 30px;
+        color: #ff89a9;
+        font-family: URW Chancery L, cursive;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .btn {
+        padding: 15px 30px;
+        font-size: 20px;
+        background-color: #ff89a9;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: scale(1.1);
+      }
+
+      .btn:active {
+        transform: scale(1.2);
+      }
+    </style>
+    <script>
+      // Periksa apakah akses diizinkan dengan memeriksa localStorage
+      if (!localStorage.getItem("accessGranted")) {
+        // Redirect ke halaman PIN jika tidak diizinkan
+        window.location.href = "pinCode.html";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Happy Valentine's Day!</h1>
+    <div class="button-container">
+      <div class="btn-img-container" onclick="window.location.href='album.html'">
+        <img src='assets/album.png' class='btn-img'/>
+        <span class='btn-label'>Album of Our Journey</span>
+      </div>
+      <div class="btn-img-container" onclick="window.location.href='10things.html'">
+        <img src='assets/redHeart.png' class='btn-img'/>
+        <span class='btn-label'>10 things <br> i love about you</span>
+      </div>
+      <div class="btn-img-container" onclick="window.location.href='songs.html'">
+        <img src='assets/music.webp' class='btn-img'/>
+        <span class='btn-label'>Songs that we both love</span>
+      </div>
+      <div class="btn-img-container" onclick="window.location.href='wishJar.html'">
+        <img src='assets/wishJar.png' class='btn-img'/>
+        <span class='btn-label'>Wish Jar</span>
+      </div>
+    </div>
+  </body>
+</html>
