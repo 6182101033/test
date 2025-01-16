@@ -1,160 +1,160 @@
 /* Styling khusus untuk perangkat HP */
 @media (max-width: 768px) {
     body {
-        background-color: #ffe5f4;
-        font-size: 1rem;
-        margin: 2vw;
-        padding: 2vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
+        background-color: #ffe5f4 !important;
+        font-size: 1rem !important;
+        margin: 2vw !important;
+        padding: 2vw !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 100vh !important;
     }
 
     h1 {
-        font-size: 1.8rem;
-        text-align: center;
-        margin: 10px 0;
-        font-family: Trattatello, fantasy;
-        color: #ff89a9;
+        font-size: 1.8rem !important;
+        text-align: center !important;
+        margin: 10px 0 !important;
+        font-family: Trattatello, fantasy !important;
+        color: #ff89a9 !important;
     }
 
     .button-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 15px;
-        width: 100%;
-        padding: 10px;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        width: 100% !important;
+        padding: 10px !important;
     }
 
     .btn-img {
-        width: 100px;
-        height: 100px;
-        transition: transform 0.2s ease;
+        width: 100px !important;
+        height: 100px !important;
+        transition: transform 0.2s ease !important;
     }
 
     .btn-img-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        cursor: pointer;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        cursor: pointer !important;
     }
 
     .btn-img-container:hover {
-        transform: scale(1.1);
+        transform: scale(1.1) !important;
     }
 
     .btn-label {
-        font-size: 1rem;
-        color: #ff89a9;
-        font-family: URW Chancery L, cursive;
-        text-align: center;
-        margin-top: 5px;
+        font-size: 1rem !important;
+        color: #ff89a9 !important;
+        font-family: URW Chancery L, cursive !important;
+        text-align: center !important;
+        margin-top: 5px !important;
     }
 
     .popup-container {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
+        display: none !important;
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        background: white !important;
+        padding: 20px !important;
+        border-radius: 10px !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+        z-index: 1000 !important;
     }
 
     .popup-container iframe {
-        width: 90%;
-        height: 200px;
-        border: none;
+        width: 90% !important;
+        height: 200px !important;
+        border: none !important;
     }
 
     .popup-close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: #ff89a9;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        font-size: 30px;
-        cursor: pointer;
+        position: absolute !important;
+        top: 10px !important;
+        right: 10px !important;
+        background: #ff89a9 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 50% !important;
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 30px !important;
+        cursor: pointer !important;
     }
 
     .popup-music {
-        position: fixed;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(255, 255, 255, 0.8);
-        border: 1px solid #ff89a9;
-        border-radius: 10px;
-        padding: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        width: 90%;
+        position: fixed !important;
+        bottom: 10px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        background: rgba(255, 255, 255, 0.8) !important;
+        border: 1px solid #ff89a9 !important;
+        border-radius: 10px !important;
+        padding: 10px !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+        display: flex !important;
+        align-items: center !important;
+        width: 90% !important;
     }
 
     .popup-music audio {
-        width: 100%;
+        width: 100% !important;
     }
 
     .popup-music span {
-        font-size: 1rem;
-        font-family: Arial, sans-serif;
-        color: #ff89a9;
-        margin-right: 10px;
+        font-size: 1rem !important;
+        font-family: Arial, sans-serif !important;
+        color: #ff89a9 !important;
+        margin-right: 10px !important;
     }
 
     .note-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 10px;
-        height: auto;
-        width: 100%;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        padding: 10px !important;
+        height: auto !important;
+        width: 100% !important;
     }
 
     .note {
-        width: 100px;
-        height: 100px;
-        background-color: #fff5f9;
-        border: 2px solid #ff89a9;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-family: URW Chancery L, cursive;
-        font-size: 0.8rem;
-        color: #ff89a9;
-        cursor: pointer;
-        transition: transform 0.2s ease;
+        width: 100px !important;
+        height: 100px !important;
+        background-color: #fff5f9 !important;
+        border: 2px solid #ff89a9 !important;
+        border-radius: 10px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        font-family: URW Chancery L, cursive !important;
+        font-size: 0.8rem !important;
+        color: #ff89a9 !important;
+        cursor: pointer !important;
+        transition: transform 0.2s ease !important;
     }
 
     .note:hover {
-        transform: scale(1.1);
+        transform: scale(1.1) !important;
     }
 
     .btn {
-        padding: 10px;
-        font-size: 1rem;
-        background-color: #ff89a9;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: transform 0.2s ease;
+        padding: 10px !important;
+        font-size: 1rem !important;
+        background-color: #ff89a9 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 10px !important;
+        cursor: pointer !important;
+        margin-top: 20px !important;
+        transition: transform 0.2s ease !important;
     }
 
     .btn:hover {
-        transform: scale(1.1);
+        transform: scale(1.1) !important;
     }
 }
