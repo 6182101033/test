@@ -1,38 +1,60 @@
 /* Styling untuk layar dengan lebar maksimum 768px */
 @media (max-width: 768px) {
-        body {
-        font-size: 1rem; /* 1 rem = ukuran font default html */
-        margin: 1em;
-        padding: 1em;
+    body {
+        font-size: 1rem; /* Pastikan ukuran font responsif */
+        margin: 2vw;
+        padding: 2vw;
     }
-    
+
     h1 {
-        font-size: 1.5em; /* Perkecil heading */
+        font-size: 1.8rem; /* Heading tetap proporsional */
     }
 
     .container {
-        padding: 1.5em;
+        padding: 2.5vw;
     }
 }
 
 /* Styling untuk layar dengan lebar maksimum 480px */
 @media (max-width: 480px) {
     body {
-        font-size: 1.2em; /* Lebih kecil lagi */
-        margin: 5px;
-        padding: 5px;
+        font-size: 0.9rem; /* Sedikit lebih kecil */
+        margin: 4vw;
+        padding: 4vw;
     }
 
     h1 {
-        font-size: 1.2em; /* Heading lebih kecil */
+        font-size: 1.4rem; /* Heading proporsional */
     }
 
     .container {
-        padding: 10px;
+        padding: 5vw;
     }
 
     .button {
-        font-size: 10px; /* Tombol lebih kecil */
-        padding: 5px;
+        font-size: 0.8rem; /* Tombol proporsional */
+        padding: 2vw 4vw;
+    }
+}
+
+/* Styling untuk layar dengan lebar sangat kecil (misalnya iPhone SE) */
+@media (max-width: 320px) {
+    body {
+        font-size: 0.8rem;
+        margin: 5vw;
+        padding: 5vw;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .container {
+        padding: 5vw;
+    }
+
+    .button {
+        font-size: 0.7rem;
+        padding: 3vw;
     }
 }
