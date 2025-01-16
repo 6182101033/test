@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylingHp.css">
+    <title>Enter PIN Code</title>
+    <style>
+      body {
+        background-color: #ffe5f4;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      h1 {
+        font-family: Trattatello, fantasy;
+        color: #ff89a9;
+        font-size: 50px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .pin-container {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .pin-box {
+        width: 50px;
+        height: 60px;
+        font-size: 30px;
+        text-align: center;
+        border: 2px solid #ff89a9;
+        border-radius: 10px;
+        outline: none;
+        transition: transform 0.2s ease;
+      }
+
+      .pin-box:focus {
+        transform: scale(1.1);
+        border-color: #ff5b8f;
+      }
+
+      .pin-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+      }
+
+      .pin-button {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        text-align: center;
+        border: none;
+        border-radius: 15px;
+        background-color: #ff89a9;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .pin-button:hover {
+        transform: scale(1.1);
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 20px;
+        background-color: #ff89a9;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      button:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>This mail is sealed, please enter the PIN code!</h1>
+    <div class="pin-container">
+      <input type="text" maxlength="1" class="pin-box" />
+      <input type="text" maxlength="1" class="pin-box" />
+      <input type="text" maxlength="1" class="pin-box" />
+      <input type="text" maxlength="1" class="pin-box" />
+      <input type="text" maxlength="1" class="pin-box" />
+      <input type="text" maxlength="1" class="pin-box" />
+    </div>
+    <div class="pin-grid">
+      <button class="pin-button">1</button>
+      <button class="pin-button">2</button>
+      <button class="pin-button">3</button>
+      <button class="pin-button">4</button>
+      <button class="pin-button">5</button>
+      <button class="pin-button">6</button>
+      <button class="pin-button">7</button>
+      <button class="pin-button">8</button>
+      <button class="pin-button">9</button>
+      <div></div>
+      <button class="pin-button">0</button>
+      <div></div>
+    </div>
+    <button id="submitBtn">Submit</button>
+
+    <script>
+      const pinInputs = document.querySelectorAll(".pin-box");
+      const pinButtons = document.querySelectorAll(".pin-button");
+      let currentIndex = 0;
+
+      pinButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          if (currentIndex < pinInputs.length) {
+            pinInputs[currentIndex].value = button.textContent;
+            currentIndex++;
+            if (currentIndex < pinInputs.length) {
+              pinInputs[currentIndex].focus();
+            }
+          }
+        });
+      });
+
+      document.getElementById("submitBtn").addEventListener("click", () => {
+        const enteredPin = Array.from(pinInputs).map(input => input.value).join("");
+        if (enteredPin === "121224") {
+            localStorage.setItem("accessGranted", "true");
+            window.location.href = "mainPage.html";
+            } else {
+            alert("Incorrect PIN! Hint: our anniversary date");
+            }
+
+        pinInputs.forEach(input => input.value = "");
+        currentIndex = 0;
+        pinInputs[0].focus();
+      });
+    </script>
+  </body>
+</html>

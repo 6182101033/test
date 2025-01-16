@@ -1,0 +1,35 @@
+/* Styling khusus untuk layar dengan lebar maksimum 768px (tablet dan HP) */
+@media (max-width: 768px) {
+    body {
+        background-color: #f0f0f0;
+    }
+
+    .container {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    nav {
+        display: none; /* Sembunyikan menu besar */
+    }
+
+    .mobile-menu {
+        display: block; /* Tampilkan menu khusus HP */
+    }
+}
+
+/* Styling khusus untuk layar dengan lebar maksimum 480px (HP kecil) */
+@media (max-width: 480px) {
+    body {
+        background-color: #e0e0e0;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .button {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylingHp.css">
+    <title>Photo Album</title>
+    <style>
+      body {
+        background-color: #ffe5f4;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .album-container {
+        width: 1000px;
+        height: 600px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .album-content {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .album-page {
+        width: 65%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .album-item img,
+      .album-item video {
+        width: 80%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .album-item img:hover,
+      .album-item video:hover {
+        transform: scale(1.2);
+      }
+
+      .album-details-container {
+        width: 30%;
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        border-left: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .album-details {
+        text-align: center;
+        color: #ff89a9;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+
+      .album-details h3 {
+        margin: 10px 0;
+        font-size: 24px;
+      }
+
+      .album-details p {
+        margin: 5px 0;
+        font-size: 16px;
+      }
+
+      .nav-button {
+        cursor: pointer;
+        font-size: 40px;
+        color: #ff89a9;
+        user-select: none;
+        padding: 20px;
+        transition: transform 0.2s ease;
+      }
+
+      .nav-button:hover {
+        transform: scale(1.2);
+      }
+
+      .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        border-radius: 10px;
+        z-index: 1000;
+      }
+
+      .popup img,
+      .popup video {
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="album-container">
+      <div id="prev" class="nav-button" onclick="changePage(-1)">&#9664;</div>
+      <div class="album-content">
+        <div class="album-page" id="album-page">
+          <!-- Page 1 -->
+          <div class="album-item" data-page="1">
+            <img src="/assets/ourPhotos/1-1.jpeg" alt="Photo 1" onclick="openPopup('/assets/ourPhotos/1-1.jpeg', 'image')" />
+          </div>
+          <div class="album-item" data-page="1">
+            <img src="/assets/ourPhotos/1-2.jpeg" alt="Photo 2" onclick="openPopup('/assets/ourPhotos/1-2.jpeg', 'image')" />
+          </div>
+
+          <!-- Page 2 -->
+          <div class="album-item" data-page="2">
+            <video src="album.png" controls onclick="openPopup('video1.mp4', 'video')"></video>
+          </div>
+          <div class="album-item" data-page="2">
+            <img src="assets/ourPhotos/2-1.jpeg" alt="Photo 4" onclick="openPopup('/assets/ourPhotos/2-1.jpeg', 'image')" />
+          </div>
+        </div>
+
+        <!-- Album Details -->
+        <div class="album-details-container">
+          <div class="album-details" data-page="1">
+            <h3>29 November 2024</h3>
+            <p>Remember the first time we talked? And you kept on losing when we were playing games on plato :p</p>
+          </div>
+          <div class="album-details" data-page="2">
+            <h3>2023-02-01</h3>
+            <p>This is the description for Page 2.</p>
+          </div>
+        </div>
+      </div>
+      <div id="next" class="nav-button" onclick="changePage(1)">&#9654;</div>
+    </div>
+
+    <div id="popup" class="popup"></div>
+    <div id="overlay" class="overlay" onclick="closePopup()"></div>
+
+    <script>
+      let currentPage = 1;
+
+      function changePage(step) {
+        const totalPages = Math.max(
+          ...Array.from(document.querySelectorAll("[data-page]")).map((item) =>
+            +item.getAttribute("data-page")
+          )
+        );
+        currentPage += step;
+        if (currentPage < 1) currentPage = totalPages;
+        if (currentPage > totalPages) currentPage = 1;
+
+        updatePage();
+      }
+
+      function updatePage() {
+        const items = document.querySelectorAll("[data-page]");
+        items.forEach((item) => {
+          const page = parseInt(item.getAttribute("data-page"), 10);
+          item.style.display = page === currentPage ? "block" : "none";
+        });
+      }
+
+      function openPopup(src, type) {
+        const popup = document.getElementById("popup");
+        if (type === "image") {
+          popup.innerHTML = `<img src="${src}" alt="Popup Image">`;
+        } else if (type === "video") {
+          popup.innerHTML = `<video src="${src}" controls autoplay></video>`;
+        }
+        popup.style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+      }
+
+      function closePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+      }
+
+      updatePage();
+    </script>
+  </body>
+</html>
