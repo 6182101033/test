@@ -1,7 +1,9 @@
+/* Media Queries */
+
 /* Styling untuk layar dengan lebar maksimum 768px */
 @media (max-width: 768px) {
     body {
-        font-size: 1rem; /* Pastikan ukuran font responsif */
+        font-size: 1rem; /* Ukuran font responsif */
         margin: 2vw;
         padding: 2vw;
     }
@@ -13,12 +15,17 @@
     .container {
         padding: 2.5vw;
     }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
 }
 
 /* Styling untuk layar dengan lebar maksimum 480px */
 @media (max-width: 480px) {
     body {
-        font-size: 0.9rem; /* Sedikit lebih kecil */
+        font-size: 0.9rem;
         margin: 4vw;
         padding: 4vw;
     }
@@ -31,7 +38,7 @@
         padding: 5vw;
     }
 
-    .button {
+    button {
         font-size: 0.8rem; /* Tombol proporsional */
         padding: 2vw 4vw;
     }
@@ -53,7 +60,7 @@
         padding: 5vw;
     }
 
-    .button {
+    button {
         font-size: 0.7rem;
         padding: 3vw;
     }
