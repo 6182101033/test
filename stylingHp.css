@@ -152,11 +152,21 @@
 
     /* Styling untuk Surat Cinta */
     .letter-container {
-        display: none !important;
+        display: none !important; /* Awalnya disembunyikan */
         flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
         width: 100% !important;
         max-width: 90% !important;
-        overflow-y: auto !important; /* Aktifkan scroll jika konten panjang */
+        padding: 20px !important;
+        margin-top: 50px !important;
+        overflow-y: auto !important;
+        background: white !important; /* Pastikan latar belakang solid */
+        position: fixed !important; /* Pastikan selalu muncul di atas */
+        top: 0 !important;
+        left: 0 !important;
+        height: 100vh !important;
+        z-index: 999 !important; /* Pastikan muncul di atas */
     }
 
     .letter {
