@@ -191,15 +191,19 @@
 
     <script>
       function openLetter() {
-        // Sembunyikan popup
+        // Sembunyikan pop-up
         document.getElementById("valentinePopup").style.display = "none";
-        
+    
         // Tampilkan surat cinta
-        document.getElementById("letterContainer").style.display = "flex";
-
-        // Mainkan musik
-        document.getElementById("valentineMusic").play();
-      }
+        let letterContainer = document.getElementById("letterContainer");
+        letterContainer.style.display = "flex"; // Pastikan muncul
+    
+        // Pastikan background body tidak bisa di-scroll saat surat muncul
+        document.body.style.overflow = "hidden";
+    
+        // Jika masih tidak muncul, coba debug di console
+        console.log("Surat muncul:", letterContainer.style.display);
+    }
     </script>
   </body>
 </html>
