@@ -154,6 +154,7 @@
     .letter-container {
         max-width: 95% !important;
         padding: 15px !important;
+        min-height: 100vh;
     }
 
     .letter {
