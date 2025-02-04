@@ -1,4 +1,66 @@
+/* Styling untuk perangkat mobile */
 @media (max-width: 768px) {
+    /* Styling body */
+    body {
+        background-color: #ffe5f4 !important;
+        font-size: 1rem !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    /* Styling untuk judul */
+    h1 {
+        font-size: 2rem !important;
+        text-align: center !important;
+        margin: 15px 0 !important;
+        font-family: Trattatello, fantasy !important;
+        color: #ff89a9 !important;
+        animation: fadeIn 2s ease-in-out !important;
+    }
+
+    /* Styling untuk amplop (gambar) */
+    #envelope {
+        width: 200px !important;
+        height: auto !important;
+        cursor: pointer !important;
+        animation: bounce 1.5s infinite !important;
+        transition: transform 0.3s ease !important;
+    }
+
+    a:hover #envelope {
+        transform: scale(1.1) !important;
+    }
+
+    a:active #envelope {
+        transform: scale(1.2) !important;
+    }
+
+    /* Animasi */
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Styling untuk box PIN */
     .pin-container {
         display: flex !important;
         justify-content: center !important;
@@ -7,8 +69,8 @@
     }
 
     .pin-box {
-        width: 30px !important;
-        height: 30px !important;
+        width: 40px !important;
+        height: 50px !important;
         font-size: 24px !important;
         text-align: center !important;
         border: 2px solid #ff89a9 !important;
@@ -27,9 +89,9 @@
     .pin-grid {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 2px !important;
+        gap: 10px !important;
         justify-content: center !important;
-        width: 100% !important;
+        width: 80% !important;
         margin: auto !important;
     }
 
@@ -50,6 +112,7 @@
         transform: scale(1.1) !important;
     }
 
+    /* Styling tombol submit */
     #submitBtn {
         width: 80% !important;
         padding: 12px !important;
