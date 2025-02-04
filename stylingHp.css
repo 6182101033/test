@@ -157,4 +157,73 @@
     .btn:hover {
         transform: scale(1.1) !important;
     }
+    .pin-container {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .pin-box {
+        width: 40px !important;
+        height: 50px !important;
+        font-size: 24px !important;
+        text-align: center !important;
+        border: 2px solid #ff89a9 !important;
+        border-radius: 8px !important;
+        outline: none !important;
+        transition: transform 0.2s ease !important;
+        background-color: white !important;
+        color: #ff5b8f !important;
+    }
+
+    .pin-box:focus {
+        transform: scale(1.1) !important;
+        border-color: #ff5b8f !important;
+    }
+
+    .pin-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+        justify-content: center !important;
+        width: 80% !important;
+        margin: auto !important;
+    }
+
+    .pin-button {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 20px !important;
+        text-align: center !important;
+        border: none !important;
+        border-radius: 10px !important;
+        background-color: #ff89a9 !important;
+        color: white !important;
+        cursor: pointer !important;
+        transition: transform 0.2s ease !important;
+    }
+
+    .pin-button:hover {
+        transform: scale(1.1) !important;
+    }
+
+    #submitBtn {
+        width: 80% !important;
+        padding: 12px !important;
+        font-size: 18px !important;
+        background-color: #ff5b8f !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
+        transition: transform 0.2s ease !important;
+        text-align: center !important;
+        display: block !important;
+        margin: 20px auto 0 !important;
+    }
+
+    #submitBtn:hover {
+        transform: scale(1.1) !important;
+    }
 }
