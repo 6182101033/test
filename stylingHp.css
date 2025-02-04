@@ -8,7 +8,7 @@
         flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
-        height: 100vh !important;
+        min-height: 100vh !important;
         overflow-y: auto !important; /* Aktifkan scrolling */
         margin:10px !important;
     }
@@ -158,7 +158,6 @@
         text-align: center !important;
         width: 100% !important;
         max-width: 90% !important;
-        min-height: 100vh !important;
         padding: 20px !important; /* Tambahkan padding agar tidak kepotong */
         margin-top: 50px !important; /* Kurangi margin agar lebih rapi */
         overflow-y: auto !important; /* Aktifkan scroll jika konten panjang */
