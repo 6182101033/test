@@ -116,7 +116,14 @@
       const pinInputs = document.querySelectorAll(".pin-box");
       const pinButtons = document.querySelectorAll(".pin-button");
       let currentIndex = 0;
-
+      
+      // Cegah input manual dengan keyboard
+      pinInputs.forEach(input => {
+        input.addEventListener("focus", (e) => {
+          e.target.blur(); // Hapus fokus agar keyboard tidak muncul
+        });
+      });
+      
       pinButtons.forEach(button => {
         button.addEventListener("click", () => {
           if (currentIndex < pinInputs.length) {
@@ -128,16 +135,16 @@
           }
         });
       });
-
+      
       document.getElementById("submitBtn").addEventListener("click", () => {
         const enteredPin = Array.from(pinInputs).map(input => input.value).join("");
         if (enteredPin === "121224") {
-            localStorage.setItem("accessGranted", "true");
-            window.location.href = "mainPage.html";
-            } else {
-            alert("Incorrect PIN! Hint: our anniversary date");
-            }
-
+          localStorage.setItem("accessGranted", "true");
+          window.location.href = "mainPage.html";
+        } else {
+          alert("Incorrect PIN! Hint: our anniversary date");
+        }
+      
         pinInputs.forEach(input => input.value = "");
         currentIndex = 0;
         pinInputs[0].focus();
