@@ -3,182 +3,173 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine Surprise</title>
     <link rel="stylesheet" href="stylingHp.css">
-    <title>Main Page</title>
     <style>
+      /* Styling Body */
       body {
         background-color: #ffe5f4;
+        font-family: "Comic Sans MS", "Comic Sans", cursive;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
         height: 100vh;
         margin: 0;
       }
 
-      h1 {
-        font-family: Trattatello, fantasy;
-        color: #ff89a9;
-        font-size: 100px;
-        margin-top: 20px;
-        margin-bottom: 0px;
-        text-align: center;
-      }
-
-      .button-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        align-items: center;
-        justify-items: center;
-      }
-
-      .btn-img-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        cursor: pointer;
-        transition: transform 0.2s ease;
-      }
-
-      .btn-img-container:hover {
-        transform: scale(1.1);
-      }
-
-      .btn-img-container:active {
-        transform: scale(1.2);
-      }
-
-      .btn-img {
-        width: 150px;
-        height: 150px;
-      }
-
-      .btn-label {
-        margin-top: 10px;
-        font-size: 30px;
-        color: #ff89a9;
-        font-family: URW Chancery L, cursive;
-        cursor: pointer;
-        text-align: center;
-      }
-
-      .popup-container {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-      }
-
-      .popup-container iframe {
-        width: 1200px;
-        height: 675px;
-        border: none;
-      }
-
-      .popup-close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: #ff89a9;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 70px;
-        height: 70px;
-        font-size: 50px;
-        cursor: pointer;
-      }
-
-      .overlay {
-        display: none;
+      /* Pop-up Container */
+      .popup {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-      }
-
-      .popup-music {
-        position: fixed;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(255, 255, 255, 0.8);
-        border: 1px solid #ff89a9;
-        border-radius: 10px;
-        padding: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         display: flex;
         align-items: center;
+        justify-content: center;
       }
 
-      .popup-music audio {
-        width: 200px;
+      /* Pop-up Content */
+      .popup-content {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1s ease-in-out;
       }
 
-      .popup-music span {
+      /* Styling Button Yes */
+      .button-container {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+      }
+
+      .yes-button {
+        background-color: #ff5b8f;
+        color: white;
         font-size: 20px;
-        font-family: Arial, sans-serif;
-        color: #ff89a9;
-        margin-right: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .yes-button:hover {
+        transform: scale(1.1);
+      }
+
+      /* Surat Cinta */
+      .letter-container {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .letter {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        max-width: 80%;
+      }
+
+      .letter h2 {
+        color: #ff5b8f;
+      }
+
+      .letter p {
+        text-align: left;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 18px;
+        color: #333;
+      }
+
+      .letter ol {
+          font-family: 'Courier New', Courier, monospace;
+          text-align: left; /* Sejajarkan teks ke kiri */
+          margin-left: 20px; /* Tambahkan jarak dari kiri */
+          padding-left: 20px; /* Padding agar lebih rapi */
+          font-size: 16px; /* Pastikan ukuran font nyaman dibaca */
+      }
+
+
+      .valentine-photo {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 15px;
+        margin-top: 10px;
+      }
+
+      /* Animasi */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
       }
     </style>
-    <script>
-      function openPopup(page) {
-        const popup = document.getElementById('popup');
-        const overlay = document.getElementById('overlay');
-        popup.innerHTML = `<button class='popup-close' onclick='closePopup()'>×</button><iframe src="${page}"></iframe>`;
-        popup.style.display = 'block';
-        overlay.style.display = 'block';
-      }
-
-      function closePopup() {
-        const popup = document.getElementById('popup');
-        const overlay = document.getElementById('overlay');
-        popup.style.display = 'none';
-        overlay.style.display = 'none';
-      }
-    </script>
   </head>
   <body>
-    <h1>Happy Valentine's Day!</h1>
-    <div class="button-container">
-      <div class="btn-img-container" onclick="openPopup('album.html')">
-        <img src='assets/album.png' class='btn-img'/>
-        <span class='btn-label'>Album of Our Journey</span>
-      </div>
-      <div class="btn-img-container" onclick="openPopup('10things.html')">
-        <img src='assets/redHeart.png' class='btn-img'/>
-        <span class='btn-label'>10 things <br> i love about you</span>
-      </div>
-      <div class="btn-img-container" onclick="openPopup('songs.html')">
-        <img src='assets/music.webp' class='btn-img'/>
-        <span class='btn-label'>Songs that we both love</span>
-      </div>
-      <div class="btn-img-container" onclick="openPopup('wishJar.html')">
-        <img src='assets/wishJar.png' class='btn-img'/>
-        <span class='btn-label'>Wish Jar</span>
+    <!-- Musik (disembunyikan awalnya) -->
+    <audio id="valentineMusic" loop>
+      <source src="assets/LNOE.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Pop-up Valentine -->
+    <div class="popup" id="valentinePopup">
+      <div class="popup-content">
+        <h2>Will you be my Valentine? 💖</h2>
+        <div class="button-container">
+          <button class="yes-button" onclick="openLetter()">Yes</button>
+          <button class="yes-button" onclick="openLetter()">Yes</button>
+        </div>
       </div>
     </div>
 
-    <div id="popup" class="popup-container"></div>
-    <div id="overlay" class="overlay" onclick="closePopup()"></div>
-
-    <div class="popup-music">
-      <span>Before you click anything else, play the music first pwease!!--></span>
-      <audio controls loop>
-        <source src="assets/LNOE.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
+    <!-- Kontainer Surat Cinta (disembunyikan awalnya) -->
+    <div class="letter-container" id="letterContainer">
+      <div class="letter">
+        <h2>💌 To The Love of My Life 💌</h2>
+        <p>
+          Dear my beloved Rahid,  
+          Thank you for being the most wonderful man in the world!
+          Makasih ya, udah mau nemenin aku dan ngusahain aku. 
+          I'm so grateful to have you as my bf, hopefully as a husband
+          in the future ;) I know you're gonna be the best husband
+          and father! Jangan pernah minder atau insecure ya, you're already
+          perfect in my eyes, and I love everything about you.
+          If you don't believe me, I'll list 100 things i love about you!
+          Here you go:
+          <ol>
+            <li>Your effort</li>
+            <li>Your smile</li>
+            <li>Your kindness</li>
+            <li>Your face</li>
+            <li>Your body</li>
+          </ol>
+        </p>
+        <img src="assets/ourPhotos/2-1.jpeg" alt="Valentine Photo" class="valentine-photo">
+        <p>💞 Forever Yours 💞</p>
+      </div>
     </div>
+
+    <script>
+      function openLetter() {
+        // Sembunyikan popup
+        document.getElementById("valentinePopup").style.display = "none";
+        
+        // Tampilkan surat cinta
+        document.getElementById("letterContainer").style.display = "flex";
+
+        // Mainkan musik
+        document.getElementById("valentineMusic").play();
+      }
+    </script>
   </body>
 </html>
