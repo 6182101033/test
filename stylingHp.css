@@ -154,7 +154,7 @@
     .letter-container {
         margin-top: 500px !important;
         max-width: 90% !important;
-        min-height: 100vh;
+        min-height: 100vh !important;
         margin-bottom: 30px !important;
     }
 
